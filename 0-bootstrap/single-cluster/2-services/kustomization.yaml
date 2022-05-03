@@ -50,8 +50,8 @@ resources:
  - argocd/instances/ansible-automation-platform-instance.yaml
 
  # OpenShift Virtualization (Used to host instana instance)
- - argocd/operators/openshift-virtualization.yaml
- - argocd/instances/openshift-virtualization-instance.yaml
+#  - argocd/operators/openshift-virtualization.yaml
+#  - argocd/instances/openshift-virtualization-instance.yaml
 
  # OpenShift Advanced Cluster Security (aka Stackrox)
  - argocd/operators/openshift-acs-operator.yaml
