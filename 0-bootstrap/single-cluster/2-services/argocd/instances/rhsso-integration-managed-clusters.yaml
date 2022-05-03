@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rhsso-integration-managed-clusters
+  annotations:
+    argocd.argoproj.io/sync-wave: "253"
+  labels:
+    gitops.tier.group: cntk
+    gitops.tier.layer: services
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: sso-integration
+    server: https://kubernetes.default.svc
+  project: services
+  source:
+    path: instances/rhsso-integration-managed-clusters
+    helm:
+      values: |
+        clustersList: 
+        - aws0
+        - aws1
+        - aws2
+        - azure0
+        - azure1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
